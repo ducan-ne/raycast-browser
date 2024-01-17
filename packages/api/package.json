@@ -13,7 +13,7 @@
   "private": true,
   "devDependencies": {
     "@onehop/client": "^1.6.5",
-    "@types/chrome": "^0.0.257",
+    "@types/chrome": "^0.0.258",
     "@types/node": "^20.11.4",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@onehop/js": "^1.47.0",
-    "@onehop/react": "^1.6.5"
+    "@onehop/react": "^1.6.5",
+    "pusher-js": "8.4.0-rc2"
   }
 }

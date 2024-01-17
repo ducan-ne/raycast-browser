@@ -64,11 +64,15 @@ const listener = (message: any) => {
 client.getDirectMessageListeners().set(HOP_CHANNEL_RESPONSE_EVENT, new Set([listener]))
 
 type BrowserAPI = typeof chrome & {
-  executeScript(
+  executeScript<F extends () => unknown, T = unknown>(
     tabId: number,
-    func: () => unknown
-  ): unknown
-  executeScriptCurrentTab(
+    func: F
+  ): Promise<ReturnType<F>>
+  executeScriptCurrentTab<F extends () => unknown, T = unknown>(
+    func: F
+  ): Promise<ReturnType<F>>
+  // TODO
+  executeScriptInBackground(
     func: () => unknown
   ): unknown
 }

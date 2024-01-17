@@ -5,8 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "bun build background.ts --outfile=background.js --watch --target browser --minify",
-    "dev-old": "plasmo dev"
+    "dev": "plasmo dev"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,22 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.257",
+    "plasmo": "^0.84.0",
     "tsup": "^8.0.1"
+  },
+  "manifest": {
+    "permissions": [
+      "tabs",
+      "scripting",
+      "activeTab",
+      "storage",
+      "processes",
+      "userScripts",
+      "cookies"
+    ],
+    "host_permissions": [
+      "https://*/*",
+      "http://*/*"
+    ]
   }
 }
