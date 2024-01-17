@@ -15,6 +15,7 @@
       "@types/node",
       "@types/chrome"
     ],
+    "allowJs": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

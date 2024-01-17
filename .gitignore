@@ -5,3 +5,4 @@ node_modules
 build
 packages/api/config.ts
 packages/webext/background.js
+packages/webext/build

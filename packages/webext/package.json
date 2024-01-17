@@ -15,7 +15,9 @@
   "dependencies": {
     "@onehop/client": "^1.6.5",
     "@onehop/js": "^1.47.0",
-    "browser-api": "workspace:*"
+    "browser-api": "workspace:*",
+    "pusher": "^5.2.0",
+    "pusher-js": "8.4.0-rc2"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.257",

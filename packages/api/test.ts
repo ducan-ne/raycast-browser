@@ -30,10 +30,10 @@ const [tab] = await browser.tabs.query({ active: true })
 //     }
 //   })
 
-console.log(await browser.tabs.sendMessage(tab.id!, { code: `document.title` }))
-console.log(await browser.executeScript(tab.id!, () => {
-  document.body.style.backgroundColor = 'red'
-}))
+// console.log(await browser.tabs.sendMessage(tab.id!, { code: `document.title` }))
+// console.log(await browser.executeScript(tab.id!, () => {
+//   document.body.style.backgroundColor = 'red'
+// }))
 console.log(await browser.executeScriptCurrentTab(() => document.title))
 
 process.exit()

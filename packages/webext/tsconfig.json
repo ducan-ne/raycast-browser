@@ -13,6 +13,7 @@
     "resolveJsonModule": true,
     "noImplicitAny": false,
     "types": [
+      "@types/node",
       "@types/chrome"
     ],
     "strict": true,

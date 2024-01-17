@@ -1,21 +1,25 @@
-import { hop as HopClient } from '@onehop/client'
-import {
-  HOP_CHANNEL_EVENT,
-  HOP_CHANNEL_RESPONSE_EVENT,
-  HOP_CHANNEL_TOKEN, HOP_PROJECT_ID,
-  HOP_PROJECT_TOKEN
-} from 'browser-api/config.js'
-import { Hop } from '@onehop/js'
-import { Request, Response } from 'browser-api'
-
-const hop = new Hop({
-  authentication: HOP_PROJECT_TOKEN
+import { Request, Response } from 'browser-api/base.js'
+import PusherClient from 'pusher-js/worker'
+import Pusher from 'pusher'
+// @ts-ignore
+const client = new PusherClient('app-key', {
+  cluster: "",
+  httpHost: "127.0.0.1",
+  httpPort: 6001,
+  wsHost: "127.0.0.1",
+  wsPort: 6001,
+  wssPort: 6001,
+  forceTLS: false,
+  enabledTransports: ["ws", "wss"],
 })
-const client = HopClient.init({
-  projectId: HOP_PROJECT_ID,
-  token: HOP_CHANNEL_TOKEN,
+const pusher = new Pusher({
+  port: '6001',
+  host: 'localhost',
+  appId: "app-id",
+  key: "app-key",
+  secret: "app-secret",
+  cluster: ''
 })
-
 // @ts-ignore
 chrome.userScripts.getScripts().then(console.log)
 
@@ -47,7 +51,7 @@ const listener = async (message: any) => {
     method = method ? method[path] : chrome[path as keyof typeof chrome] as any
   }
   if (!method) {
-    return hop.channels.tokens.publishDirectMessage(HOP_CHANNEL_TOKEN, HOP_CHANNEL_RESPONSE_EVENT, {
+    return pusher.trigger('raycast-browser', 'responses', {
       requestId: request.requestId,
       error: 'Unknown error, method could not be found'
     } satisfies Response)
@@ -70,16 +74,17 @@ const listener = async (message: any) => {
       return arg
     })
     const data = await method(...refinedArgs)
-    await hop.channels.tokens.publishDirectMessage(HOP_CHANNEL_TOKEN, HOP_CHANNEL_RESPONSE_EVENT, {
+    await pusher.trigger('raycast-browser', 'responses', {
       requestId: request.requestId,
       data,
     } satisfies Response)
   } catch (e: any) {
-    await hop.channels.tokens.publishDirectMessage(HOP_CHANNEL_TOKEN, HOP_CHANNEL_RESPONSE_EVENT, {
+    await pusher.trigger('raycast-browser', 'responses', {
       requestId: request.requestId,
-      error: e.message,
+      data: e.message,
     } satisfies Response)
   }
 }
+client.connect()
+client.subscribe('raycast-browser').bind('commands', listener)
 
-client.getDirectMessageListeners().set(HOP_CHANNEL_EVENT, new Set([listener]))

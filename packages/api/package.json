@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite"
   },
@@ -22,8 +23,7 @@
     "vite": "^5.0.11"
   },
   "dependencies": {
-    "@onehop/js": "^1.47.0",
-    "@onehop/react": "^1.6.5",
+    "pusher": "^5.2.0",
     "pusher-js": "8.4.0-rc2"
   }
 }
