@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "raycast-browser",
+  "name": "raycast-browser-sample",
   "title": "Raycast browser",
   "description": "Hello world template for Raycast browser extensions",
   "icon": "command-icon.png",
