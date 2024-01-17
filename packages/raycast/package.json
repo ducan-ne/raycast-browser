@@ -9,7 +9,7 @@
   "commands": [
     {
       "name": "index",
-      "title": "Show List and Detail",
+      "title": "Chrome's tabs",
       "description": "Template for showing a static list and a detail view",
       "mode": "view"
     }
