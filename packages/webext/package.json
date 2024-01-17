@@ -1,0 +1,25 @@
+{
+  "name": "webext",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "bun build background.ts --outfile=background.js --watch --target browser --minify",
+    "dev-old": "plasmo dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ducan-ne/raycast-browser.git"
+  },
+  "private": true,
+  "dependencies": {
+    "@onehop/client": "^1.6.5",
+    "@onehop/js": "^1.47.0",
+    "browser-api": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.257",
+    "tsup": "^8.0.1"
+  }
+}

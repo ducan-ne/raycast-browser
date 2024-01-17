@@ -1,0 +1,28 @@
+{
+  "name": "browser-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ducan-ne/raycast-browser.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "@onehop/client": "^1.6.5",
+    "@types/chrome": "^0.0.257",
+    "@types/node": "^20.11.4",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite": "^5.0.11"
+  },
+  "dependencies": {
+    "@onehop/js": "^1.47.0",
+    "@onehop/react": "^1.6.5"
+  }
+}
