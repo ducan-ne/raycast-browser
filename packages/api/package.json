@@ -1,17 +1,12 @@
 {
-  "name": "browser-api",
+  "name": "raycast-browser",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
     "dev": "vite"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ducan-ne/raycast-browser.git"
-  },
-  "private": true,
   "devDependencies": {
     "@onehop/client": "^1.6.5",
     "@types/chrome": "^0.0.258",

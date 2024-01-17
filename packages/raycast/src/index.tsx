@@ -1,6 +1,6 @@
 import { ActionPanel, Detail, List, Action, useNavigation } from '@raycast/api'
 import { usePromise } from '@raycast/utils'
-import { browser } from 'browser-api/node'
+import { browser } from 'raycast-browser/node'
 import { useState } from 'react'
 
 export default function Command() {

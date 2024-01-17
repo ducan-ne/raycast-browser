@@ -14,12 +14,6 @@ importers:
 
   packages/api:
     dependencies:
-      '@onehop/js':
-        specifier: ^1.47.0
-        version: 1.47.0
-      '@onehop/react':
-        specifier: ^1.6.5
-        version: 1.6.5(react@18.2.0)
       pusher:
         specifier: ^5.2.0
         version: 5.2.0
@@ -73,15 +67,15 @@ importers:
       '@types/react':
         specifier: 18.2.27
         version: 18.2.27
-      browser-api:
-        specifier: workspace:*
-        version: link:../api
       eslint:
         specifier: ^8.51.0
         version: 8.56.0
       prettier:
         specifier: ^3.0.3
         version: 3.2.4
+      raycast-browser:
+        specifier: workspace:*
+        version: link:../api
       typescript:
         specifier: ^5.2.2
         version: 5.3.3
@@ -94,15 +88,15 @@ importers:
       '@onehop/js':
         specifier: ^1.47.0
         version: 1.47.0
-      browser-api:
-        specifier: workspace:*
-        version: link:../api
       pusher:
         specifier: ^5.2.0
         version: 5.2.0
       pusher-js:
         specifier: 8.4.0-rc2
         version: 8.4.0-rc2
+      raycast-browser:
+        specifier: workspace:*
+        version: link:../api
     devDependencies:
       '@types/chrome':
         specifier: ^0.0.257
@@ -1082,21 +1076,6 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
-
-  /@onehop/react@1.6.5(react@18.2.0):
-    resolution: {integrity: sha512-o7AlHEQ2N8SN3RcalfRMUmAJMGzTARDCXf5chWc5FGG98/CTNx/3LpG1e1Q4+V2UWDWgo0D8fhbDVC1g4bRMrQ==}
-    peerDependencies:
-      react: '*'
-    dependencies:
-      '@onehop/client': 1.6.5
-      '@onehop/js': 1.47.0
-      '@onehop/leap-edge-js': 1.0.11
-      react: 18.2.0
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - utf-8-validate
-    dev: false
 
   /@parcel/bundler-default@2.9.3(@parcel/core@2.9.3):
     resolution: {integrity: sha512-JjJK8dq39/UO/MWI/4SCbB1t/qgpQRFnFDetAAAezQ8oN++b24u1fkMDa/xqQGjbuPmGeTds5zxGgYs7id7PYg==}

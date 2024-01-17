@@ -1,4 +1,4 @@
-import { Request, Response } from 'browser-api/base.js'
+import { Request, Response } from 'packages/api/base.js'
 import PusherClient from 'pusher-js/worker'
 import Pusher from 'pusher'
 // @ts-ignore

@@ -23,7 +23,7 @@
     "@types/chrome": "^0.0.258",
     "@types/node": "20.8.10",
     "@types/react": "18.2.27",
-    "browser-api": "workspace:*",
+    "raycast-browser": "workspace:*",
     "eslint": "^8.51.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"

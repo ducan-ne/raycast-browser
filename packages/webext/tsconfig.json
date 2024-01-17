@@ -1,4 +1,5 @@
 {
+  "extends": "plasmo/templates/tsconfig.base",
   "compilerOptions": {
     "target": "esnext",
     "jsx": "react-jsxdev",
@@ -6,6 +7,7 @@
       "esnext",
       "dom"
     ],
+    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "NodeNext",
     "allowJs": true,

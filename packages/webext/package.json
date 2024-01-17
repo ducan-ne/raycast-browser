@@ -1,11 +1,13 @@
 {
   "name": "webext",
+  "displayName": "Raycast Browser",
+  "author": "Duc An x/duc__an",
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
   "scripts": {
-    "dev": "plasmo dev"
+    "dev": "plasmo dev",
+    "build": "plasmo build && plasmo package"
   },
   "repository": {
     "type": "git",
@@ -15,7 +17,7 @@
   "dependencies": {
     "@onehop/client": "^1.6.5",
     "@onehop/js": "^1.47.0",
-    "browser-api": "workspace:*",
+    "raycast-browser": "workspace:*",
     "pusher": "^5.2.0",
     "pusher-js": "8.4.0-rc2"
   },
