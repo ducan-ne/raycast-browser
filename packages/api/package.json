@@ -1,11 +1,12 @@
 {
   "name": "raycast-browser",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "test": "bun run test.ts"
   },
   "devDependencies": {
     "@onehop/client": "^1.6.5",

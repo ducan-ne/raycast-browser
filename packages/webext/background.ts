@@ -1,4 +1,4 @@
-import { Request, Response } from 'packages/api/base.js'
+import type { Request, Response } from 'raycast-browser/base.js'
 import PusherClient from 'pusher-js/worker'
 import Pusher from 'pusher'
 // @ts-ignore

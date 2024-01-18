@@ -44,21 +44,21 @@ const ee = new EventEmitter()
 export function createBrowserAPI(Client: typeof PusherClient) {
   // @ts-expect-error invalid type
   const client = new Client('app-key', {
-    cluster: "",
-    httpHost: "127.0.0.1",
+    cluster: '',
+    httpHost: '127.0.0.1',
     httpPort: 6001,
-    wsHost: "127.0.0.1",
+    wsHost: '127.0.0.1',
     wsPort: 6001,
     wssPort: 6001,
     forceTLS: false,
-    enabledTransports: ["ws", "wss"],
+    enabledTransports: ['ws', 'wss'],
   })
   const pusher = new Pusher({
     port: '6001',
     host: 'localhost',
-    appId: "app-id",
-    key: "app-key",
-    secret: "app-secret",
+    appId: 'app-id',
+    key: 'app-key',
+    secret: 'app-secret',
     cluster: ''
   })
 
@@ -66,17 +66,19 @@ export function createBrowserAPI(Client: typeof PusherClient) {
     ee.emit('responses', message)
   }
   client.connect()
-  client.connection.bind("connected", () => {
+  client.connection.bind('connected', () => {
     client.subscribe('raycast-browser').bind('responses', listener)
   })
 
   type BrowserAPI = typeof chrome & {
     executeScript<F extends () => unknown>(
       tabId: number,
-      func: F
+      func: F,
+      args: unknown[]
     ): Promise<ReturnType<F>>
     executeScriptCurrentTab<F extends () => unknown>(
-      func: F
+      func: F,
+      args: unknown[]
     ): Promise<ReturnType<F>>
     // TODO
     executeScriptInBackground(
@@ -102,21 +104,21 @@ export function createBrowserAPI(Client: typeof PusherClient) {
       throw new Error('No response')
     }
     if (opts.path[0] === 'executeScript') {
-      const [tabId, func] = opts.args as Parameters<BrowserAPI['executeScript']>
+      const [tabId, func, args] = opts.args as Parameters<BrowserAPI['executeScript']>
       return send({
         path: ['tabs', 'sendMessage'],
-        args: [tabId, { code: `(${func.toString()})()` }],
+        args: [tabId, { code: `(${func.toString()})(...${JSON.stringify(args)})` }],
       })
     }
     if (opts.path[0] === 'executeScriptCurrentTab') {
-      const [func] = opts.args as Parameters<BrowserAPI['executeScriptCurrentTab']>
+      const [func, args] = opts.args as Parameters<BrowserAPI['executeScriptCurrentTab']>
       const [tab] = await send({
         path: ['tabs', 'query'],
         args: [{ active: true }],
       }) as Awaited<ReturnType<BrowserAPI['tabs']['query']>>
       return send({
         path: ['tabs', 'sendMessage'],
-        args: [tab.id, { code: `(${func.toString()})()` }],
+        args: [tab.id, { code: `(${func.toString()})(...${JSON.stringify(args)})` }],
       })
     }
     return send(opts)
