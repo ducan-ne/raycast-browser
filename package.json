@@ -1,9 +1,6 @@
 {
   "name": "raycast-browser",
   "version": "1.0.0",
-  "workspaces": [
-    "packages/*"
-  ],
   "description": "",
   "main": "index.js",
   "scripts": {
