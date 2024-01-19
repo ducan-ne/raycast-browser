@@ -17,9 +17,10 @@
   "dependencies": {
     "@onehop/client": "^1.6.5",
     "@onehop/js": "^1.47.0",
-    "raycast-browser": "workspace:*",
+    "@plasmohq/persistent": "^0.0.4",
     "pusher": "^5.2.0",
-    "pusher-js": "8.4.0-rc2"
+    "pusher-js": "8.4.0-rc2",
+    "raycast-browser": "workspace:*"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.257",

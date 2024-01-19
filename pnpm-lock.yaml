@@ -88,6 +88,9 @@ importers:
       '@onehop/js':
         specifier: ^1.47.0
         version: 1.47.0
+      '@plasmohq/persistent':
+        specifier: ^0.0.4
+        version: 0.0.4
       pusher:
         specifier: ^5.2.0
         version: 5.2.0
@@ -2579,6 +2582,10 @@ packages:
       - walrus
       - whiskers
     dev: true
+
+  /@plasmohq/persistent@0.0.4:
+    resolution: {integrity: sha512-4Awod3+Fz6F8usWoWjH0iDu5qtWIgQiPPHu+aTOievd2wRRwk31LjppdSIp6HLGsIDjq/0tr6enqxYIK+gNIzQ==}
+    dev: false
 
   /@pnpm/config.env-replace@1.1.0:
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}

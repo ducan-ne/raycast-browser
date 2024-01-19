@@ -1,23 +1,26 @@
 import type { Request, Response } from 'raycast-browser/base.js'
 import PusherClient from 'pusher-js/worker'
 import Pusher from 'pusher'
+import { keepAlive } from '@plasmohq/persistent/background'
+
+keepAlive()
 // @ts-ignore
 const client = new PusherClient('app-key', {
-  cluster: "",
-  httpHost: "127.0.0.1",
+  cluster: '',
+  httpHost: '127.0.0.1',
   httpPort: 6001,
-  wsHost: "127.0.0.1",
+  wsHost: '127.0.0.1',
   wsPort: 6001,
   wssPort: 6001,
   forceTLS: false,
-  enabledTransports: ["ws", "wss"],
+  enabledTransports: ['ws', 'wss'],
 })
 const pusher = new Pusher({
   port: '6001',
   host: 'localhost',
-  appId: "app-id",
-  key: "app-key",
-  secret: "app-secret",
+  appId: 'app-id',
+  key: 'app-key',
+  secret: 'app-secret',
   cluster: ''
 })
 // @ts-ignore
@@ -38,11 +41,18 @@ chrome.userScripts.register([{
     code: 'chrome.runtime.onMessage.addListener(fn);' +
       function fn(msg, sender, sendResponse) {
         if (msg.code) {
-          sendResponse(eval(msg.code))
+          const result = eval(msg.code)
+          if (result instanceof Promise) {
+            result.then(sendResponse)
+            return true
+          }
+          sendResponse(result)
         }
       },
   }],
-}])
+}]).catch(() => {
+  // already registered
+})
 
 const listener = async (message: any) => {
   const request = message as Request

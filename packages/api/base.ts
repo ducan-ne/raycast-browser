@@ -71,14 +71,14 @@ export function createBrowserAPI(Client: typeof PusherClient) {
   })
 
   type BrowserAPI = typeof chrome & {
-    executeScript<F extends () => unknown>(
+    executeScript<F extends (...args: any[]) => unknown>(
       tabId: number,
       func: F,
-      args: unknown[]
+      args?: unknown[]
     ): Promise<ReturnType<F>>
-    executeScriptCurrentTab<F extends () => unknown>(
+    executeScriptCurrentTab<F extends (...args: any[]) => unknown>(
       func: F,
-      args: unknown[]
+      args?: unknown[]
     ): Promise<ReturnType<F>>
     // TODO
     executeScriptInBackground(
@@ -107,7 +107,7 @@ export function createBrowserAPI(Client: typeof PusherClient) {
       const [tabId, func, args] = opts.args as Parameters<BrowserAPI['executeScript']>
       return send({
         path: ['tabs', 'sendMessage'],
-        args: [tabId, { code: `(${func.toString()})(...${JSON.stringify(args)})` }],
+        args: [tabId, { code: `(${func.toString()})(...${JSON.stringify(args || [])})` }],
       })
     }
     if (opts.path[0] === 'executeScriptCurrentTab') {
@@ -118,7 +118,7 @@ export function createBrowserAPI(Client: typeof PusherClient) {
       }) as Awaited<ReturnType<BrowserAPI['tabs']['query']>>
       return send({
         path: ['tabs', 'sendMessage'],
-        args: [tab.id, { code: `(${func.toString()})(...${JSON.stringify(args)})` }],
+        args: [tab.id, { code: `(${func.toString()})(...${JSON.stringify(args || [])})` }],
       })
     }
     return send(opts)
