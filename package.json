@@ -13,5 +13,8 @@
   "private": true,
   "devDependencies": {
     "@types/node": "^20.11.4"
+  },
+  "volta": {
+    "node": "20.12.2"
   }
 }

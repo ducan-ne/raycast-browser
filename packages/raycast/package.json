@@ -10,22 +10,29 @@
     {
       "name": "index",
       "title": "Chrome's tabs",
-      "description": "Template for showing a static list and a detail view",
+      "description": "For testing purposes",
+      "mode": "view"
+    },
+    {
+      "name": "twitter-following",
+      "title": "Twitter following",
+      "description": "Twitter following list",
       "mode": "view"
     }
   ],
   "dependencies": {
     "@raycast/api": "^1.65.1",
-    "@raycast/utils": "^1.10.1"
+    "@raycast/utils": "^1.10.1",
+    "remeda": "^1.60.1"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.6",
     "@types/chrome": "^0.0.258",
     "@types/node": "20.8.10",
     "@types/react": "18.2.27",
-    "raycast-browser": "workspace:*",
     "eslint": "^8.51.0",
     "prettier": "^3.0.3",
+    "raycast-browser": "workspace:*",
     "typescript": "^5.2.2"
   },
   "scripts": {
